@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simran Agarwala - AI Researcher specializing in Post-Transformer Architectures, Geometric Deep Learning, and Causal Inference">
+    <meta name="keywords" content="AI Research, Machine Learning, SSMs, Geometric Deep Learning, Causal Inference">
+    <meta name="author" content="Simran Agarwala">
+    <title>Simran Agarwala | AI Researcher</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- MathJax for equations -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-tagline {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .contact-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styles */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a2a3a;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+        
+        /* Research Interests */
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .interest-tag {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #667eea;
+        }
+        
+        /* Education & Skills */
+        .edu-item {
+            margin-bottom: 1rem;
+        }
+        
+        .edu-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .edu-meta {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-category h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #4a5568;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background: #f7fafc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #4a5568;
+        }
+        
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: #fafbfc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+        
+        .project-tag {
+            font-size: 0.7rem;
+            background: #e2e8f0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            color: #4a5568;
+        }
+        
+        .project-description {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+        
+        .project-metrics {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-top: 0.5rem;
+        }
+        
+        /* Paper Section */
+        .paper-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        
+        .paper-title {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .paper-venue {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+        
+        /* Research Statement */
+        .research-statement {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Simran Agarwala</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container" id="home">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Simran Agarwala</h1>
+            <div class="hero-tagline">AI Researcher | Post-Transformer Architectures | Geometric Deep Learning</div>
+            <div class="hero-badges">
+                <span class="badge">🎓 B.Tech CSE, Graphic Era University</span>
+                <span class="badge">🔬 HSRN: Hierarchical State Resonance Network</span>
+                <span class="badge">🏥 Healthcare AI Researcher</span>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:simranagarwal2701@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/simgrace" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/simran-agarwala-2293b5365" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/simran_agarwala" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        
+        <!-- Research Interests -->
+        <div class="section" id="research">
+            <h2 class="section-title">🔬 Research Interests</h2>
+            <div class="interests-grid">
+                <span class="interest-tag">Post-Transformer Sequence Modelling</span>
+                <span class="interest-tag">Computational Neuroscience & Neural Architectures</span>
+                <span class="interest-tag">Causal Inference & Representation Learning</span>
+                <span class="interest-tag">Riemannian & Geometric Deep Learning</span>
+                <span class="interest-tag">Healthcare AI</span>
+                <span class="interest-tag">LLM Fine-tuning, RLHF & PEFT</span>
+                <span class="interest-tag">Multimodal AI</span>
+                <span class="interest-tag">Dynamical Systems & State Space Models</span>
+            </div>
+        </div>
+        
+        <!-- Education & Skills -->
+        <div class="section">
+            <h2 class="section-title">📚 Education & Skills</h2>
+            <div class="edu-item">
+                <div class="edu-title">B.Tech in Computer Science Engineering</div>
+                <div class="edu-meta">Graphic Era Deemed to be University, Dehradun | CGPA: 8.0/10 | Expected Dec 2026</div>
+                <div class="edu-meta"><strong>Coursework:</strong> Machine Learning • Deep Learning • NLP • Data Structures • Probability & Statistics • Linear Algebra</div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Deep Learning</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">JAX</span>
+                        <span class="skill-item">Hugging Face</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>SSMs & Architectures</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">S4 / Mamba</span>
+                        <span class="skill-item">HiPPO</span>
+                        <span class="skill-item">Transformers</span>
+                        <span class="skill-item">Diffusion Models</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Geometric Deep Learning</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Riemannian Geometry</span>
+                        <span class="skill-item">Poincaré Embeddings</span>
+                        <span class="skill-item">GNNs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Causal Inference</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">DAGs</span>
+                        <span class="skill-item">NOTEARS</span>
+                        <span class="skill-item">DoWhy</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>LLM Stack</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">LoRA / PEFT</span>
+                        <span class="skill-item">LangChain</span>
+                        <span class="skill-item">FAISS</span>
+                        <span class="skill-item">RAG</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Weights & Biases</span>
+                        <span class="skill-item">LaTeX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Research: HSRN -->
+        <div class="section">
+            <h2 class="section-title">⭐ Featured Research: HSRN</h2>
+            <div class="project-card" style="background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);">
+                <div class="project-title">Hierarchical State Resonance Network</div>
+                <div class="project-tags">
+                    <span class="project-tag">Post-Transformer Architecture</span>
+                    <span class="project-tag">SSMs</span>
+                    <span class="project-tag">Riemannian Geometry</span>
+                    <span class="project-tag">Causal DAGs</span>
+                </div>
+                <div class="project-description">
+                    A ground-up redesign addressing quadratic attention cost via HiPPO-based SSM layers (O(n log n)), 
+                    Riemannian temporal embeddings (Poincaré Ball), lateral resonance modules, and differentiable Causal DAG (NOTEARS).
+                </div>
+                <div class="project-metrics">
+                    📊 Benchmarks: SCAN | Long Range Arena | Causal Inference — superior in regimes where Transformers are weakest
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="color: #667eea; text-decoration: none;">📄 Read Paper →</a>
+                    <span style="margin: 0 1rem">|</span>
+                    <a href="#" style="color: #667eea; text-decoration: none;">💻 GitHub Repo →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects -->
+        <div class="section" id="projects">
+            <h2 class="section-title">🚀 Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- HSRN Project Card -->
+                <div class="project-card">
+                    <div class="project-title">HSRN: Hierarchical State Resonance Network</div>
+                    <div class="project-tags">
+                        <span class="project-tag">PyTorch</span>
+                        <span class="project-tag">SSMs</span>
+                        <span class="project-tag">HiPPO</span>
+                        <span class="project-tag">Riemannian</span>
+                    </div>
+                    <div class="project-description">
+                        Novel architecture combining HiPPO-based SSMs with Riemannian temporal embeddings and causal DAG regularization.
+                        Achieves superior performance on long-range benchmarks and compositional generalization tasks.
+                    </div>
+                    <div class="project-metrics">🎯 Target: NeurIPS/ICLR Workshop 2027</div>
+                </div>
+                
+                <!-- Medical LLM Project -->
+                <div class="project-card">
+                    <div class="project-title">Fine-Tuned Medical LLM</div>
+                    <div class="project-tags">
+                        <span class="project-tag">Mistral-7B</span>
+                        <span class="project-tag">LoRA</span>
+                        <span class="project-tag">PEFT</span>
+                        <span class="project-tag">4-bit Quantization</span>
+                    </div>
+                    <div class="project-description">
+                        Fine-tuned Mistral-7B on PubMedQA + MedMCQA using LoRA (rank=16, alpha=32), updating only 0.1% of parameters.
+                        4-bit NF4 quantization reduced GPU memory by 75% and latency by 40%.
+                    </div>
+                    <div class="project-metrics">🚀 Deployed on Hugging Face Spaces</div>
+                </div>
+                
+                <!-- Multimodal Alzheimer's Detection -->
+                <div class="project-card">
+                    <div class="project-title">Multimodal Alzheimer's & Brain Tumor Detection</div>
+                    <div class="project-tags">
+                        <span class="project-tag">CNN</span>
+                        <span class="project-tag">Medical Imaging</span>
+                        <span class="project-tag">Flask API</span>
+                    </div>
+                    <div class="project-description">
+                        Multi-class CNN for brain tumor classification (glioma, meningioma, pituitary, no tumor) and Alzheimer's detection from MRI.
+                        Achieved ~90% test accuracy; custom augmentation improved minority-class F1-score by +12%.
+                    </div>
+                    <div class="project-metrics">🏥 Extended with RAG-augmented clinical report generator</div>
+                </div>
+                
+                <!-- Medical Report Generator RAG -->
+                <div class="project-card">
+                    <div class="project-title">Medical Report Generator — RAG Pipeline</div>
+                    <div class="project-tags">
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">FAISS</span>
+                        <span class="project-tag">Mistral</span>
+                        <span class="project-tag">Streamlit</span>
+                    </div>
+                    <div class="project-description">
+                        End-to-end clinical AI: MRI → CNN → FAISS retrieval (PubMed + guidelines) → structured diagnostic reports with provenance tracking.
+                    </div>
+                    <div class="project-metrics">📋 Deployed with Streamlit interface</div>
+                </div>
+                
+                <!-- AI Mental Health Companion -->
+                <div class="project-card">
+                    <div class="project-title">AI Mental Health Companion</div>
+                    <div class="project-tags">
+                        <span class="project-tag">Whisper ASR</span>
+                        <span class="project-tag">Transformers</span>
+                        <span class="project-tag">Streamlit</span>
+                    </div>
+                    <div class="project-description">
+                        Voice input (Whisper ASR), emotion detection, mood tracking, empathetic response generation.
+                    </div>
+                    <div class="project-metrics">🎯 88% intent-classification accuracy</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Publications / Preprints -->
+        <div class="section" id="publications">
+            <h2 class="section-title">📝 Selected Preprints & Manuscripts</h2>
+            <div class="paper-item">
+                <div class="paper-title">HSRN: Hierarchical State Resonance Networks for Long-Sequence Modeling</div>
+                <div class="paper-venue">In preparation for NeurIPS 2027 | Under review for ICLR 2027 Workshop</div>
+            </div>
+            <div class="paper-item">
+                <div class="paper-title">Riemannian Temporal Embeddings for Compositional Generalization</div>
+                <div class="paper-venue">Target: ICLR 2027 Workshop on Geometrical Principles of Representation Learning</div>
+            </div>
+            <div class="paper-item">
+                <div class="paper-title">Causal DAG Regularization in State Space Models</div>
+                <div class="paper-venue">In preparation</div>
+            </div>
+        </div>
+        
+        <!-- Independent Study -->
+        <div class="section">
+            <h2 class="section-title">📖 Independent Study</h2>
+            <div class="interests-grid">
+                <span class="interest-tag">📐 Riemannian Geometry (do Carmo)</span>
+                <span class="interest-tag">🔗 Causality (Judea Pearl)</span>
+                <span class="interest-tag">📊 Structured State Spaces (Gu et al., 2022)</span>
+                <span class="interest-tag">🧠 Computational Neuroscience</span>
+            </div>
+        </div>
+        
+        <!-- Certifications -->
+        <div class="section">
+            <h2 class="section-title">🎓 Certifications</h2>
+            <div class="interests-grid">
+                <span class="interest-tag">Machine Learning & Deep Learning Specializations — Andrew Ng / DeepLearning.AI</span>
+                <span class="interest-tag">NLP Specialization — Hugging Face</span>
+                <span class="interest-tag">Python for Data Science — IBM/Coursera</span>
+            </div>
+        </div>
+        
+        <!-- Research Statement -->
+        <div class="section">
+            <h2 class="section-title">💡 Research Statement</h2>
+            <div class="research-statement">
+                My research sits at the intersection of sequence modelling architecture design, computational neuroscience, and causal representation learning. 
+                Through HSRN, I am working toward a principled post-Transformer architecture that replaces heuristic mechanisms with theoretically-grounded alternatives 
+                from dynamical systems theory, Riemannian geometry, and neuroscience. 
+                <br><br>
+                <strong>Seeking research internship in labs focused on sequence modelling, geometric deep learning, causal AI, or healthcare AI.</strong>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 Simran Agarwala | Built with <i class="fas fa-heart" style="color: #667eea;"></i> for AI Research</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="#" style="color: #718096; text-decoration: none;">📄 Resume</a> |
+                <a href="https://github.com/simgrace" style="color: #718096; text-decoration: none;">GitHub</a> |
+                <a href="https://linkedin.com/in/simran-agarwala-2293b5365" style="color: #718096; text-decoration: none;">LinkedIn</a> |
+                <a href="mailto:simranagarwal2701@gmail.com" style="color: #718096; text-decoration: none;">Contact</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
